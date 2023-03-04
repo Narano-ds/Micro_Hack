@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+		<link rel="stylesheet" href="{{url_for('static', filename='spec.css')}}"/>	
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+		<title>Dashboard des Etudiants</title>
+	</head>
+	<body>
+		<div class="grid-container">
+		  
+		  <aside class="sidenav">		
+			<div >
+				<img id="logo" src="{{url_for('static', filename='img/Health.png')}}" height="150px" width="150px"/>
+			</div>			
+			
+			<div id="menu">
+	            <a href="/spec">
+                    <div >
+                        <img class="icon" src="{{url_for('static', filename='img/livres.png')}}" height="20px" width="20px"/>
+                        <p>Acceuil</p>
+                    </div>
+                </a>
+                <a href="/etudiant" >
+                    <div id="page-actuelle">
+                        <img class="icon" src="{{url_for('static', filename='img/ecrire.png')}}" height="20px" width="20px"/>
+                        <p>Employés</p>
+                    </div>
+                </a>
+                <a href="/annees">
+                    <div>
+					    <img class="icon" src="{{url_for('static', filename='img/calendar.png')}}" height="20px" width="20px"/>
+					    <p>Ajouter</p>
+				    </div>
+                </a>
+				<a href="/liste">
+                    <div>
+					    <img class="icon" src="{{url_for('static', filename='img/ecrire.png')}}" height="20px" width="20px"/>
+					    <p>Modifier</p>
+				    </div>
+                </a>
+				<a href="/debut">
+                    <div>
+					    <img class="icon" src="{{url_for('static', filename='img/ecrire.png')}}" height="20px" width="20px"/>
+					    <p>Supprimer</p>
+				    </div>
+                </a>
+				
+				<button id="btn_refresh" onclick="loadData_etudiant()">
+					<img class="icon" src="{{url_for('static', filename='img/sync.png')}}" height="20px" width="20px"/>
+					Actualiser
+				</button>
+				<a href="/">
+					<div id="logout">
+						<img class="icon" src="{{url_for('static', filename='img/logout.png')}}" height="20px" width="20px"/>
+						<p>Log out</p>
+					</div>
+				</a>
+			</div>	
+		  </aside>
+		  <main class="main">
+			<div class="card" id="card0">
+				<p id="title">Dashboard des Employés : <span id="text-etudiant1"></span></p> 
+			</div>
+			<div class="card" id="card1">	
+				<div class="card-header">
+					<p>Polar Chart : Nombre  d'employé par tranche d'age.</p>
+		
+					<canvas id="polar-chart" width="150" height="100"></canvas>
+		
+				</div>
+				<div class="card-content">	
+					<canvas id="bar-chart" height="180" width="380"></canvas>
+				</div>	
+			</div>
+			<div class="card" id="card2">	
+				<div class="card-header">
+					<p>Line Chart : The evolution of students in a speciality per year</p>
+				</div>
+				<div class="card-content" >
+					<canvas id="line-chart" height="170" width="400"></canvas>
+				</div>
+			</div>
+			
+			<div class="card" id="card3">	
+				<div id="zone-recherche">
+					<div id="text-cont">
+						<p>L'employé :</p>
+						<span id="text-etudiant"></span>
+					</div>
+					<div id="input-cont">
+                        <input type="number" id="input-etudiant" name="input-etudiant" placeholder="Veuillez saisir le matricule..">
+                        <button id="bouton-etudiant" onclick="getPersons ()">
+                            Recherche
+                        </button>
+                    </div>
+				</div>
+				
+				<table>
+					<tr>
+                        <th id="col-num">Matricule</th>
+                        <th id="col-txt">Nom</th>
+                        <th id="col-txt">Prenom</th>
+                        <th id="col-num">Age</th>
+						<th id="col-num">sexe 	</th>
+
+						<th id="col-txt">Fonction</th>
+						<th id="col-num">Nombre de maladies</th>
+                        
+    					</tr>
+					<tr>
+						<td>258436</td>
+						<td>Mourad</td>
+						<td>Mourad</td>
+						<td>30</td>
+						<td>M</td>
+						<td>agent de sécurité</td>
+						<td>1</td>
+
+					</tr>
+					<tr>
+						<td>298836</td>
+						<td>youcef</td>
+						<td>youcef</td>
+						<td>49</td>
+
+						<td>M</td>
+						<td>agent de sécurité</td>
+						<td>0</td>
+
+					</tr>
+					<tr>
+						<td>958436</td>
+						<td>islam</td>
+						<td>islam</td>
+						<td>61</td>
+
+						<td>M</td>
+						<td>agent comptable</td>
+						<td>3</td>
+
+					</tr>
+					<tr>
+						<td>458436</td>
+						<td>Farah</td>
+						<td>Farah</td>
+						<td>28</td>
+
+						<td>F</td>
+						<td>secrétaire</td>
+						<td>0</td>
+
+					</tr>
+					<tr>
+						<td>488436</td>
+						<td>Ines</td>
+						<td>Ines</td>
+						<td>41</td>
+
+						<td>F</td>
+						<td>agent d'entretien</td>
+						<td>1</td>
+
+					</tr>
+					
+				</table>
+
+
+			</div>
+
+		  </main>
+		  <footer class="footer"></footer>
+		</div>
+		
+		
+		
+		<!--
+		<div style="height: 300px; width: 300px; border:1px solid red; display:inline; float:left">
+			<div style="height: 100%; width: 100%; border:1px solid black">
+				<canvas id="bar-chart" width="300" height="300"></canvas>
+			</div>			
+		</div>
+		<div style="height: 300px; width: 300px; border:1px solid red; display:inline; float:left">
+			<div style="height: 100%; width: 100%; border:1px solid black">
+				<canvas id="line-chart" width="300" height="300"></canvas>
+			</div>			
+		</div>
+		
+		<div style="height: 300px; width: 300px; border:1px solid red; display:inline; float:left">
+			<div style="height: 100%; width: 100%; border:1px solid black">
+				<canvas id="pie-chart" width="300" height="300"></canvas>
+			</div>			
+		</div>
+		
+		<button onclick="loadData()">
+				Load
+		</button>-->
+		
+	</body>
+	<!-- <script src="{{url_for('static', filename='script.js')}}"></script>
+	<script src="{{url_for('static', filename='etudiant.js')}}"></script> -->
+	<script src="{{url_for('static', filename='liste.js')}}"></script>
+
+</html>

@@ -1,0 +1,105 @@
+<!doctype html>
+<head>
+    <title>Liste des etudiants</title>
+</head>
+<html>
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+		<link rel="stylesheet" href="{{url_for('static', filename='spec.css')}}"/>	
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+	</head>
+	<body>
+		<div class="grid-container">
+		  
+		  <aside class="sidenav">		
+			<div >
+				<img id="logo" src="{{url_for('static', filename='img/Health.png')}}" height="150px" width="150px"/>
+			</div>			
+			
+			<div id="menu">
+				<a href="/spec">
+                    <div >
+                        <img class="icon" src="{{url_for('static', filename='img/livres.png')}}" height="20px" width="20px"/>
+                        <p>Acceuil</p>
+                    </div>
+                </a>
+                <a href="/etudiant">
+                    <div>
+                        <img class="icon" src="{{url_for('static', filename='img/ecrire.png')}}" height="20px" width="20px"/>
+                        <p>Employés</p>
+                    </div>
+                </a>
+                <a href="/annees">
+                    <div>
+					    <img class="icon" src="{{url_for('static', filename='img/calendar.png')}}" height="20px" width="20px"/>
+					    <p>Ajouter</p>
+				    </div>
+                </a>
+				<a href="/liste" >
+                    <div id="page-actuelle">
+					    <img class="icon" src="{{url_for('static', filename='img/ecrire.png')}}" height="20px" width="20px"/>
+					    <p>Modifier</p>
+				    </div>
+                </a>
+				<a href="/debut">
+                    <div>
+					    <img class="icon" src="{{url_for('static', filename='img/ecrire.png')}}" height="20px" width="20px"/>
+					    <p>Supprimer</p>
+				    </div>
+                </a>
+				
+				<button id="btn_refresh" onclick="doAfficherPersons1()">
+					<img class="icon" src="{{url_for('static', filename='img/sync.png')}}" height="20px" width="20px"/>
+					Actualiser
+				</button>
+				<a href="/">
+					<div id="logout">
+						<img class="icon" src="{{url_for('static', filename='img/logout.png')}}" height="20px" width="20px"/>
+						<p>Log out</p>
+					</div>
+				</a>
+			</div>	
+		  </aside>
+		  <main class="main2">
+			<div class="card" id="card0">
+                <div id="zone-recherche">
+                    <div id="title">
+                            <p>Listes des employés :</p>
+                    </div>
+                    <div id="input-cont">
+                        <input type="number" id="input-etudiant" name="input-etudiant" placeholder="Veuillez saisir le matricule..">
+                        <button id="bouton-etudiant" onclick="getPersons ()">
+                            Recherche
+                        </button>
+                    </div>
+                </div>
+			</div>
+			
+			<div class="card" id="card10">	
+				
+				<table>
+					<tr>
+                        <th id="col-num">Matricule</th>
+                        <th id="col-num">Année</th>
+                        <th id="col-txt">Nom</th>
+                        <th id="col-txt">Prenom</th>
+                        <th id="col-num">sexe</th>
+                        <th id="col-num">id</th>
+						<th id="col-txt">Specialité</th>
+						<th id="col-num">Moyenne</th>
+                        
+    					</tr>
+					
+				</table>
+
+			</div>
+
+		  </main>
+		  <footer class="footer"></footer>
+		</div>
+		
+		
+	
+	</body>
+	<script src="{{url_for('static', filename='liste.js')}}"></script>
+</html>

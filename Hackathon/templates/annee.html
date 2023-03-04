@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+		<link rel="stylesheet" href="{{url_for('static', filename='spec.css')}}"/>	
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+		<title>Dashboard des Années</title>
+	</head>
+	<body>
+		<div class="grid-container">
+		  
+		  <aside class="sidenav">		
+			<div >
+				<img id="logo" src="{{url_for('static', filename='img/Health.png')}}" height="150px" width="150px"/>
+			</div>			
+			
+			<div id="menu">
+				<a href="/spec">
+                    <div >
+                        <img class="icon" src="{{url_for('static', filename='img/livres.png')}}" height="20px" width="20px"/>
+                        <p>Acceuil</p>
+                    </div>
+                </a>
+                <a href="/etudiant">
+                    <div>
+                        <img class="icon" src="{{url_for('static', filename='img/ecrire.png')}}" height="20px" width="20px"/>
+                        <p>Employés</p>
+                    </div>
+                </a>
+                <a href="/annees" >
+                    <div id="page-actuelle">
+					    <img class="icon" src="{{url_for('static', filename='img/calendar.png')}}" height="20px" width="20px"/>
+					    <p>Ajouter</p>
+				    </div>
+                </a>
+				<a href="/liste">
+                    <div>
+					    <img class="icon" src="{{url_for('static', filename='img/ecrire.png')}}" height="20px" width="20px"/>
+					    <p>Modifier</p>
+				    </div>
+                </a>
+				<a href="/debut">
+                    <div>
+					    <img class="icon" src="{{url_for('static', filename='img/ecrire.png')}}" height="20px" width="20px"/>
+					    <p>Supprimer</p>
+				    </div>
+                </a>
+				
+				<button id="btn_refresh" onclick="loadData_annee()">
+					<img class="icon" src="{{url_for('static', filename='img/sync.png')}}" height="20px" width="20px"/>
+					Actualiser
+				</button>
+				<a href="/">
+					<div id="logout">
+						<img class="icon" src="{{url_for('static', filename='img/logout.png')}}" height="20px" width="20px"/>
+						<p>Log out</p>
+					</div>
+				</a>
+			</div>	
+		  </aside>
+		  <main class="main1">
+			<div class="header_add">
+				<h1> Ajouter une nouvelle recrue !</h1>
+				<div class="champs_container">
+					<form >
+						<div class="champs">
+							<input type="text" placeholder="Entrer le nom">
+						</div>
+						<div class="champs">
+							<input type="text" placeholder="Entrer le prénom">
+						</div>
+						<div class="champs">
+							<input type="date" placeholder="Entrer votre date de naissance">
+						</div>
+						<div class="champs">
+							<h3> Maladies chroniques</h3>
+						</div>
+						<div class="champs">
+							<label for="banana">Banana</label>
+							<input type="checkbox" name="banana" id="banana">
+						  </div>
+						  <div>
+							<label for="apple">Apple</label>
+							<input type="checkbox" name="apple" id="apple">
+						</div>
+				
+					  </div>
+					</form>
+				</div>
+		
+		
+				
+
+
+			</div>
+		
+
+			
+
+		  </main>
+		  <footer class="footer"></footer>
+		</div>
+		
+		
+		
+		
+	</body>
+	<script src="{{url_for('static', filename='script.js')}}"></script>
+    <script src="{{url_for('static', filename='annee.js')}}"></script>
+</html>

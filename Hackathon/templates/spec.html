@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+		<link rel="stylesheet" href="{{url_for('static', filename='spec.css')}}"/>	
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+		<title>Dashboard</title>
+	</head>
+	<body>
+		<div class="grid-container">
+		  
+		  <aside class="sidenav">		
+			<div class="logo">
+				<img id="logo" src="{{url_for('static', filename='img/Health.png')}}"/>
+			</div>			
+			
+			<div id="menu">
+			
+                <a href="/spec">
+                    <div id="page-actuelle">
+                        <img class="icon" src="{{url_for('static', filename='img/livres.png')}}" height="20px" width="20px"/>
+                        <p>Acceuil</p>
+                    </div>
+                </a>
+                <a href="/etudiant">
+                    <div>
+                        <img class="icon" src="{{url_for('static', filename='img/ecrire.png')}}" height="20px" width="20px"/>
+                        <p>Employés</p>
+                    </div>
+                </a>
+                <a href="/annees">
+                    <div>
+					    <img class="icon" src="{{url_for('static', filename='img/calendar.png')}}" height="20px" width="20px"/>
+					    <p>Ajouter</p>
+				    </div>
+                </a>
+				<a href="/liste">
+                    <div>
+					    <img class="icon" src="{{url_for('static', filename='img/ecrire.png')}}" height="20px" width="20px"/>
+					    <p>Modifier</p>
+				    </div>
+                </a>
+				<a href="/debut">
+                    <div>
+					    <img class="icon" src="{{url_for('static', filename='img/ecrire.png')}}" height="20px" width="20px"/>
+					    <p>Supprimer</p>
+				    </div>
+                </a>
+				
+				<button id="btn_refresh" onclick="loadData_spec()">
+					<img class="icon" src="{{url_for('static', filename='img/sync.png')}}" height="20px" width="20px"/>
+					Actualiser
+				</button>
+				<a href="/">
+					<div id="logout">
+						<img class="icon" src="{{url_for('static', filename='img/logout.png')}}" height="20px" width="20px"/>
+						<p>Log out</p>
+					</div>
+				</a>
+			</div>		
+		  </aside>
+		  <main class="main1">
+			<div class="card" id="card0">
+                <div id="zone-recherche">
+					<div id="text-cont">
+                        <p id="title">
+                            Dashboard
+                            <span id="text-specialité"> </span>
+                        </p> 
+                    </div>
+                    <div id="input-cont">
+                        <input type="number" id="input-spec" name="input-spec" placeholder="Veuillez saisir le numero de la specialité..">
+                        <button id="bouton-spec" onclick="getPersons_par_specialité ()">
+                            Choisir
+                        </button>
+                    </div>
+                </div>
+			</div>
+			<div class="card" id="card5">	
+				<div class="card-header">
+					<p>line Chart : variation du nombre  d'employé par département.</p>
+				</div>
+				<div class="card-content">	
+					<canvas id="line-chart" height="220" width="350"></canvas>
+				</div>	
+			</div>
+			<div class="card" id="card6">	
+				<div class="card-header">
+					<p>Graphes circulaires : Quelques chiffres</p>
+				</div>
+				<div id="pies">
+					<div class="card-content5">
+						<canvas id="pie-chart2" width="180" height="130"></canvas>
+					</div>	
+					<div class="card-content5">
+						<canvas id="pie-chart" width="180" height="130"></canvas>
+					</div>	
+					
+					<div class="card-content5">
+						<canvas id="pie-chart3" width="180" height="130"></canvas>
+					</div>	
+				</div>
+			</div>
+            <div class="card" id="card7">	
+				<div class="card-header">
+					<p>Bar Chart : Moyenne generale de cette specialité des années passées</p>
+				</div>
+				<div class="card-content">	
+					<canvas id="bar-chart" height="220" width="350"></canvas>
+				</div>
+			</div>
+			
+	
+
+			</div>
+
+		  </main>&
+		  <footer class="footer"></footer>
+		</div>
+		
+		
+		
+		<!--
+		<div style="height: 300px; width: 300px; border:1px solid red; display:inline; float:left">
+			<div style="height: 100%; width: 100%; border:1px solid black">
+				<canvas id="bar-chart" width="300" height="300"></canvas>
+			</div>			
+		</div>
+		<div style="height: 300px; width: 300px; border:1px solid red; display:inline; float:left">
+			<div style="height: 100%; width: 100%; border:1px solid black">
+				<canvas id="line-chart" width="300" height="300"></canvas>
+			</div>			
+		</div>
+		
+		<div style="height: 300px; width: 300px; border:1px solid red; display:inline; float:left">
+			<div style="height: 100%; width: 100%; border:1px solid black">
+				<canvas id="pie-chart" width="300" height="300"></canvas>
+			</div>			
+		</div>
+		
+		<button onclick="loadData()">
+				Load
+		</button>-->
+		
+	</body>
+	<script src="{{url_for('static', filename='script.js')}}"></script>
+	<script src="{{url_for('static', filename='spec.js')}}"></script>
+</html>
